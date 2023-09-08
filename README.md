@@ -20,17 +20,17 @@
 
 ## Items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| name         | string     | null: false                    |
-| info         | text       | null: false                    |
-| status_id    | integer    | null: false                    |
-| charge_id    | integer    | null: false                    |
-| ship_from_id | integer    | null: false                    |
-| schedule_id  | integer    | null: false                    |
-| price        | string     | null: false                    |
-| category_id  | references | null: false, foreign_key: true |
-| user_id      | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| info          | text       | null: false                    |
+| status_id     | integer    | null: false                    |
+| charge_id     | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| schedule_id   | integer    | null: false                    |
+| price         | string     | null: false                    |
+| category_id   | references | null: false, foreign_key: true |
+| user_id       | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -41,15 +41,15 @@
 
 ## Addresses テーブル
 
-| Column       | Type       | Options                        |
-| -------------| ---------- | ------------------------------ |
-| postal_code  | integer    | null: false                    |
-| prefecture   | string     | null: false                    |
-| city         | string     | null: false                    |
-| address      | string     | null: false                    |
-| building     | string     |                                |
-| phone_number | string     | null: false                    |
-| record_id    | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| record_id     | references | null: false, foreign_key: true |
 
 ### Association
 
