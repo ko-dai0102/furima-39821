@@ -24,20 +24,31 @@
 | ------------- | ---------- | ------------------------------ |
 | name          | string     | null: false                    |
 | info          | text       | null: false                    |
+| category_id   | integer    | null: false                    |
 | status_id     | integer    | null: false                    |
 | charge_id     | integer    | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | schedule_id   | integer    | null: false                    |
 | price         | string     | null: false                    |
-| category_id   | references | null: false, foreign_key: true |
-| user_id       | references | null: false, foreign_key: true |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_many :images
-- belongs_to :category
 - has_one :record
+
+## Records テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 ## Addresses テーブル
 
@@ -49,42 +60,8 @@
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
-| record_id     | references | null: false, foreign_key: true |
+| record        | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :record
-
-## Records テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
-- belongs_to :address
-
-## Images テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| image   | string     | null: false                    |
-| item_id | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :item
-
-## Categories テーブル
-
-| Column  | Type    | Options     |
-| ------- | ------- | ----------- |
-| name_id | integer | null: false |
-
-### Association
-
-- has_many :items
