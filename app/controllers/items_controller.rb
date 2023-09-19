@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :item_find, only: [:show, :edit, :update, :destroy]
-  before_action :trans_index, only: [:edit, :destroy]
+  before_action :trans_index, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def trans_index
-    if @item.user_id != current_user.id
+    if @item.user_id != current_user.id || @item.record.present?
       redirect_to root_path
     end
   end
