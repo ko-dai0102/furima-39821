@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :schedule
   belongs_to :user
+  has_one :record
 
   has_one_attached :image
 
@@ -18,4 +19,5 @@ class Item < ApplicationRecord
   validates :prefecture_id, presence: true, numericality: { other_than: 1 }
   validates :schedule_id, presence: true, numericality: { other_than: 1 }
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+
 end
